@@ -3,10 +3,13 @@ import { v4 } from 'uuid';
 import PropTypes from "prop-types";
 
 function NewTicketForm(props) {
-
+    console.log('new ticket form loading')
     function handleNewTicketFormSubmission(event) {
         event.preventDefault();
         props.onNewTicketCreation({ names: event.target.names.value, location: event.target.location.value, issue: event.target.issue.value, id: v4() });
+        console.log(event.target.names.value);
+        console.log(event.target.location.value);
+        console.log(event.target.issue.value);
     }
     NewTicketForm.propTypes = {
         onNewTicketCreation: PropTypes.func

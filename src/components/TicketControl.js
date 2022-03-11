@@ -8,8 +8,10 @@ class TicketControl extends React.Component {
         super(props);
         this.state = {
             formVisibleOnPage: false,
-            masterTicketList: []
+            masterTicketList: [],
+            selectedTicket: null
         };
+        this.handleClick = this.handleClick.bind(this);
     }
 
     handleAddingNewTicketToList = (newTicket) => {
@@ -20,7 +22,7 @@ class TicketControl extends React.Component {
         });
     }
 
-    handleClick() {
+    handleClick = () => {
         this.setState(prevState => ({
             formVisibleOnPage: !prevState.formVisibleOnPage
         }));
@@ -34,14 +36,14 @@ class TicketControl extends React.Component {
         } else {
             currentlyVisibleState = <TicketList ticketList={this.state.masterTicketList} />;
             addTicketButton = <button onClick={this.handleClick}>Add ticket</button>;
-            return (
-                <React.Fragment>
-                    {currentlyVisibleState}
-                    {addTicketButton}
-                </ React.Fragment>
-            );
-        }
 
+        }
+        return (
+            <React.Fragment>
+                {currentlyVisibleState}
+                {addTicketButton}
+            </ React.Fragment>
+        );
     }
 
 }
